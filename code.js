@@ -2,23 +2,25 @@ let againdiv = document.getElementById("playagain");
 againdiv.classList.add("hidden");
 
 let tries = document.getElementById("tries");
-tries.innerText ="You have " + 3 + " tries left";
+tries.innerText = "You have " + 3 + " tries left";
 
 let triebutton = document.getElementById("enterGuessBtn");
-triebutton.addEventListener("click",listener);
+console.log(triebutton);
 
-
-function listener(){
+let listener = function () {
     let field = document.getElementById("input");
-    let value = ParseInt(field.value);
+    let value = parseInt(field.value);
     checkNumber(value);
+    console.log(value);
 }
+triebutton.addEventListener("click", listener);
 
-function checkNumber(value){
+function checkNumber(value) {
     reduceTries();
+    console.log(value);
 }
 
-function reduceTries(){
+function reduceTries() {
     let tries = document.getElementById("tries");
-    tries.innerText ="You have " + 2 + " tries left";
+    tries.innerText = "You have " + 2 + " tries left";
 }
