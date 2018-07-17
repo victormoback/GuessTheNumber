@@ -1,26 +1,30 @@
 let againdiv = document.getElementById("playagain");
 againdiv.classList.add("hidden");
 
-let tries = document.getElementById("tries");
-tries.innerText = "You have " + 3 + " tries left";
+let tryCount = 4;
+let theValue = (Math.random()*10)+1;
+reduceTries();
 
-let triebutton = document.getElementById("enterGuessBtn");
-console.log(triebutton);
+let tryButton = document.getElementById("enterGuessBtn");
 
 let listener = function () {
     let field = document.getElementById("input");
     let value = parseInt(field.value);
     checkNumber(value);
-    console.log(value);
 }
-triebutton.addEventListener("click", listener);
+tryButton.addEventListener("click", listener);
 
 function checkNumber(value) {
-    reduceTries();
-    console.log(value);
+    if (value !== theValue){
+        reduceTries();
+        if(tryCount === 0){
+            console.log("say goodbye");
+        }
+    }
 }
 
 function reduceTries() {
     let tries = document.getElementById("tries");
-    tries.innerText = "You have " + 2 + " tries left";
+    tries.innerText = "You have " + (--tryCount) + " tries left";
+    return tryCount;
 }
