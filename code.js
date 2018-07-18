@@ -1,7 +1,6 @@
 let ui = {
     againdiv: document.getElementById("playagain"),
-    guessdiv: document.getElementById("guess"),
-    //feedbackdiv: document.getElementById("tries"), ?
+    guessdiv: $("guess"),
     feedbackText: document.getElementById("tries"),
     field: document.getElementById("input"),
     tryButton: document.getElementById("enterGuessBtn"),
@@ -31,10 +30,10 @@ updateUi(state, ui);
 function render(state, ui) {
     if (state.keepPlaying) {
         ui.againdiv.classList.add("hidden");
-        ui.guessdiv.classList.remove("hidden");
+        ui.guessdiv.removeClass("hidden");
     }else{
         ui.againdiv.classList.remove("hidden");
-        ui.guessdiv.classList.add("hidden");
+        ui.guessdiv.addClass("hidden");
     }
     clearField(ui);
     updateUi(state, ui);
