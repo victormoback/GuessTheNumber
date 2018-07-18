@@ -9,6 +9,7 @@ let tryButton = document.getElementById("enterGuessBtn");
 
 let listener = function () {
     let field = document.getElementById("input");
+    field.value = "";
     let value = parseInt(field.value);
     checkNumber(value);
 }
