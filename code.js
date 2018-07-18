@@ -3,7 +3,7 @@ let ui = {
     guessdiv: $("#guess"),
     againdiv: $("#playagain"),   
     feedbackText: $("#tries"),
-    field: document.getElementById("input"),
+    field: $("#input"),
     tryButton: document.getElementById("enterGuessBtn"),
     playAgainButton: document.getElementById("playAgainBtn")
 }
@@ -42,11 +42,11 @@ function render(state, ui) {
 }
 function enterGuess(state, ui) {
     let newState = { ...state };
-    newState.value = parseInt(ui.field.value);
+    newState.value = parseInt(ui.field.val());
     return newState;
 }
 function clearField(ui) {
-    ui.field.value = "";
+    ui.field.val("");
     ui.field.focus();
 }
 
