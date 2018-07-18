@@ -1,6 +1,12 @@
 let ui = {
+<<<<<<< HEAD
     againdiv: document.getElementById("playagain"),
     guessdiv: $("guess"),
+=======
+    againdiv: $("#splayagain"),
+    guessdiv: document.getElementById("guess"),
+    //feedbackdiv: document.getElementById("tries"), ?
+>>>>>>> 4123d196e80c20d42745dd8d7eb465399dc84099
     feedbackText: document.getElementById("tries"),
     field: document.getElementById("input"),
     tryButton: document.getElementById("enterGuessBtn"),
@@ -13,7 +19,7 @@ let state = {
     theValue: 0,
     keepPlaying: true
 }
-ui.againdiv.classList.add("hidden");
+ui.againdiv.addClass("hidden");
 ui.tryButton.addEventListener("click", () => {
     state = enterGuess(state, ui);
     state = checkNumber(state, ui);
@@ -29,11 +35,19 @@ updateUi(state, ui);
 
 function render(state, ui) {
     if (state.keepPlaying) {
+<<<<<<< HEAD
         ui.againdiv.classList.add("hidden");
         ui.guessdiv.removeClass("hidden");
     }else{
         ui.againdiv.classList.remove("hidden");
         ui.guessdiv.addClass("hidden");
+=======
+        ui.againdiv.addClass("hidden");
+        ui.guessdiv.classList.remove("hidden");
+    }else{
+        ui.againdiv.removeClass("hidden");
+        ui.guessdiv.classList.add("hidden");
+>>>>>>> 4123d196e80c20d42745dd8d7eb465399dc84099
     }
     clearField(ui);
     updateUi(state, ui);
