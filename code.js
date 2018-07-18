@@ -4,8 +4,8 @@ let ui = {
     againdiv: $("#playagain"),   
     feedbackText: $("#tries"),
     field: $("#input"),
-    tryButton: document.getElementById("enterGuessBtn"),
-    playAgainButton: document.getElementById("playAgainBtn")
+    tryButton: $("#enterGuessBtn"),
+    playAgainButton: $("#playAgainBtn")
 }
 
 let state = {
@@ -15,12 +15,12 @@ let state = {
     keepPlaying: true
 }
 ui.againdiv.addClass("hidden");
-ui.tryButton.addEventListener("click", () => {
+ui.tryButton.on("click", () => {
     state = enterGuess(state, ui);
     state = checkNumber(state, ui);
     render(state, ui);
 });
-ui.playAgainButton.addEventListener("click", () => {
+ui.playAgainButton.on("click", () => {
     state = startNewGame(state);
     render(state, ui);
 });
