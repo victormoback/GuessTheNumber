@@ -15,6 +15,7 @@ let listener = function () {
     let field = document.getElementById("input");
     value = parseInt(field.value);
     field.value = "";
+    field.focus();
     checkNumber();
 }
 let resetListener = function() {
