@@ -2,7 +2,7 @@ let ui = {
 
     guessdiv: $("#guess"),
     againdiv: $("#playagain"),   
-    feedbackText: document.getElementById("tries"),
+    feedbackText: $("#tries"),
     field: document.getElementById("input"),
     tryButton: document.getElementById("enterGuessBtn"),
     playAgainButton: document.getElementById("playAgainBtn")
@@ -73,17 +73,17 @@ function checkNumber(state) {
 }
 
 function updateUi(state, ui) {
-    ui.feedbackText.innerText = "Guess a Number";
+    ui.feedbackText.text("Guess a Number");
     if (state.tryCount === 0) {
-        ui.feedbackText.innerText = "You didnt wonnered";
+        ui.feedbackText.text("You didnt wonnered");
     } else if (state.value === state.theValue) {
-        ui.feedbackText.innerText = "You wonnered";
+        ui.feedbackText.text("You wonnered");
     } else if (state.tryCount < 3) {
-        ui.feedbackText.innerText = "You have " + state.tryCount + " tries left.";
+        ui.feedbackText.text("You have " + state.tryCount + " tries left.");
         if (state.value < state.theValue && state.value !== -1) {
-            ui.feedbackText.innerText += " Try higher!!";
+            ui.feedbackText.text(ui.feedbackText.text() + " Try higher!!");
         } else if (state.value > state.theValue && state.value !== -1) {
-            ui.feedbackText.innerText += " Try lower!!";
+            ui.feedbackText.text(ui.feedbackText.text() + " Try lower!!");
         }
     }
 }
