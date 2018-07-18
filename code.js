@@ -1,29 +1,37 @@
-let againdiv = document.getElementById("playagain");
-againdiv.classList.add("hidden");
-let guessdiv = document.getElementById("guess");
-let feedback = document.getElementById("tries");
+let ui ={
+    againdiv: document.getElementById("playagain"),
+    guessdiv: document.getElementById("guess"),
+    feedbackdiv: document.getElementById("tries"),
+    feedbackText: document.getElementById("tries"),
+    field: document.getElementById("input"),
+    tryButton: document.getElementById("enterGuessBtn"),
+    playAgainButton: document.getElementById("playAgainBtn")
+}
 
-let value = -1;
-let tryCount = 0;
-let theValue = 0
+let state = {
+    tryCount: 0,
+    value: -1,
+    theValue: 0
+}
+ui.againdiv.classList.add("hidden");
 startNewGame();
 
-let tryButton = document.getElementById("enterGuessBtn");
-let playAgainButton = document.getElementById("playAgainBtn");
 
- function listener () {
-    let field = document.getElementById("input");
-    value = parseInt(field.value);
-    field.value = "";
-    field.focus();
+
+
+ui.tryButton.addEventListener("click", listener);
+ui.playAgainButton.addEventListener("click",resetListener)
+
+function listener () {
+    value = parseInt(ui.field.value);
+    ui.field.value = "";
+    ui.field.focus();
     checkNumber();
 }
-    function resetListener() {
+function resetListener() {
     startNewGame();
     toggleHidden();
 }
-tryButton.addEventListener("click", listener);
-playAgainButton.addEventListener("click",resetListener)
 
 function startNewGame() {
     value = -1;
@@ -37,24 +45,24 @@ function checkNumber() {
         reduceTries();
         if(tryCount === 0){
             toggleHidden();
-            feedback.innerText = "You didnt wonnered"
+            ui.feedbackdiv.innerText = "You didnt wonnered"
         }
     } else {
-        feedback.innerText = "You wonnered"
+        ui.feedbackdiv.innerText = "You wonnered"
         toggleHidden();
     }
 }
 
 function reduceTries() {
-    let tries = document.getElementById("tries");
-    tries.innerText = "You have " + (--tryCount) + " tries left.";
+    
+    ui.feedbackText.innerText = "You have " + (--tryCount) + " tries left.";
     if (value < theValue && value !== -1) {
-        tries.innerText += " Try higher!!"
+        ui.feedbackText.innerText += " Try higher!!"
     } else if (value > theValue && value !== -1) {
-        tries.innerText += " Try lower!!"
+        ui.feedbackText.innerText += " Try lower!!"
     }
 }
 function toggleHidden() {
-    againdiv.classList.toggle("hidden");
-    guessdiv.classList.toggle("hidden");
+    ui.againdiv.classList.toggle("hidden");
+    ui.guessdiv.classList.toggle("hidden");
 }
