@@ -11,14 +11,14 @@ startNewGame();
 let tryButton = document.getElementById("enterGuessBtn");
 let playAgainButton = document.getElementById("playAgainBtn");
 
-let listener = function () {
+ function listener () {
     let field = document.getElementById("input");
     value = parseInt(field.value);
     field.value = "";
     field.focus();
     checkNumber();
 }
-let resetListener = function() {
+    function resetListener() {
     startNewGame();
     toggleHidden();
 }
