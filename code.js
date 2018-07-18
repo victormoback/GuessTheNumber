@@ -11,19 +11,23 @@ let ui ={
 let state = {
     tryCount: 0,
     value: -1,
-    theValue: 0
+    theValue: 0,
+    keepPlaying: true
 }
 ui.againdiv.classList.add("hidden");
+ui.tryButton.addEventListener("click", inputListener);
+ui.playAgainButton.addEventListener("click",resetListener);
 startNewGame();
 
+function render(currentState, ui){
+    enterGuess(state.keepPlaying, parseInt(ui.field.value));
+}
+function enterGuess(currentState, newGuess){
+    return 
+}
 
-
-
-ui.tryButton.addEventListener("click", listener);
-ui.playAgainButton.addEventListener("click",resetListener)
-
-function listener () {
-    value = parseInt(ui.field.value);
+function inputListener () {
+    state.value = parseInt(ui.field.value);
     ui.field.value = "";
     ui.field.focus();
     checkNumber();
@@ -34,16 +38,16 @@ function resetListener() {
 }
 
 function startNewGame() {
-    value = -1;
-    tryCount = 4;
-    theValue = Math.floor(Math.random()*10)+1;
+    state.value = -1;
+    state.tryCount = 4;
+    state.theValue = Math.floor(Math.random()*10)+1;
     reduceTries();
 }
 
 function checkNumber() {
-    if (value !== theValue){
+    if (state.value !== state.theValue){
         reduceTries();
-        if(tryCount === 0){
+        if(state.tryCount === 0){
             toggleHidden();
             ui.feedbackdiv.innerText = "You didnt wonnered"
         }
@@ -54,11 +58,10 @@ function checkNumber() {
 }
 
 function reduceTries() {
-    
-    ui.feedbackText.innerText = "You have " + (--tryCount) + " tries left.";
-    if (value < theValue && value !== -1) {
+    ui.feedbackText.innerText = "You have " + (--state.tryCount) + " tries left.";
+    if (state.value < state.theValue && state.value !== -1) {
         ui.feedbackText.innerText += " Try higher!!"
-    } else if (value > theValue && value !== -1) {
+    } else if (state.value > state.theValue && state.value !== -1) {
         ui.feedbackText.innerText += " Try lower!!"
     }
 }
