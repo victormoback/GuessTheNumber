@@ -16,9 +16,6 @@ let state = {
 ui.againdiv.classList.add("hidden");
 startNewGame();
 
-
-
-
 ui.tryButton.addEventListener("click", listener);
 ui.playAgainButton.addEventListener("click",resetListener)
 
