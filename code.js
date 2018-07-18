@@ -27,7 +27,12 @@ function enterGuess(currentState, newGuess){
 }
 
 function inputListener () {
-    state.value = parseInt(ui.field.value);
+state.value = parseInt(ui.field.value);
+ui.tryButton.addEventListener("click", listener);
+ui.playAgainButton.addEventListener("click",resetListener)
+}
+function listener () {
+    value = parseInt(ui.field.value);
     ui.field.value = "";
     ui.field.focus();
     checkNumber();
