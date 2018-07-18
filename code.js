@@ -1,5 +1,5 @@
 let ui = {
-    againdiv: document.getElementById("playagain"),
+    againdiv: $("#splayagain"),
     guessdiv: document.getElementById("guess"),
     //feedbackdiv: document.getElementById("tries"), ?
     feedbackText: document.getElementById("tries"),
@@ -14,7 +14,7 @@ let state = {
     theValue: 0,
     keepPlaying: true
 }
-ui.againdiv.classList.add("hidden");
+ui.againdiv.addClass("hidden");
 ui.tryButton.addEventListener("click", () => {
     state = enterGuess(state, ui);
     state = checkNumber(state, ui);
@@ -30,10 +30,10 @@ updateUi(state, ui);
 
 function render(state, ui) {
     if (state.keepPlaying) {
-        ui.againdiv.classList.add("hidden");
+        ui.againdiv.addClass("hidden");
         ui.guessdiv.classList.remove("hidden");
     }else{
-        ui.againdiv.classList.remove("hidden");
+        ui.againdiv.removeClass("hidden");
         ui.guessdiv.classList.add("hidden");
     }
     clearField(ui);
