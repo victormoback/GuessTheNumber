@@ -26,6 +26,7 @@ ui.playAgainButton.addEventListener("click", () => {
 });
 
 state = startNewGame(state);
+updateUi(state, ui);
 
 function render(state, ui) {
     if (state.keepPlaying) {
@@ -71,12 +72,12 @@ function checkNumber(state) {
 }
 
 function updateUi(state, ui) {
-    //if just started
+    ui.feedbackText.innerText = "Guess a Number";
     if (state.tryCount === 0) {
         ui.feedbackText.innerText = "You didnt wonnered";
     } else if (state.value === state.theValue) {
         ui.feedbackText.innerText = "You wonnered";
-    } else {
+    } else if (state.tryCount < 3) {
         ui.feedbackText.innerText = "You have " + state.tryCount + " tries left.";
         if (state.value < state.theValue && state.value !== -1) {
             ui.feedbackText.innerText += " Try higher!!";
